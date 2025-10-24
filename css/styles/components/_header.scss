@@ -1,0 +1,125 @@
+@use "../abstracts" as *;
+
+header{
+    position: relative;
+    @include distance($h:100vh);
+    
+    .part1{
+        @include flex($jc: flex-start);
+                    @include respond(350){
+                    @include flex($jc: flex-start ,$ai: flex-end);
+            }
+                                @include respond(350){
+                    @include flex($jc: flex-start ,$ai:center);
+            }
+
+            .item{
+                @include respond(350){
+                    margin-top: 85px;
+                    margin-left: 20px;
+                }
+                                @include respond(850){
+                    margin : 0;
+                }
+            }
+        h1{
+        font-size: 60px;
+        font-weight: 550;
+            @include respond(350){
+                font-size: 35px ;
+            }
+            @include respond(450){
+                font-size: 40px ;
+            }
+            @include respond(450){
+                font-size: 50px ;
+            }
+            @include respond(450){
+                font-size: 60px ;
+            }
+        }
+
+        h5{
+            font-weight: 500;
+
+        }
+
+        .cd-headline.clip{
+            .cd-words-wrapper{
+                    &::after{
+                background-color: $secondColor;
+    }
+    } 
+}
+
+.box{
+    .content{
+        @include flex;
+        @include distance($w:40px , $h:40px);
+        position: relative;
+        cursor: pointer;
+        
+        i{
+            @include position($z: 6);
+            transition-duration: .5s; 
+            color: $firstColor;
+        }
+        &::after{
+        @include createEle($w:0% , $h: 0%);
+        @include position($t:50% , $l:50%, $z:1);
+        transform: translate(-50% ,-50%);
+        transition-duration: .5s; 
+        border-radius: 100%
+        }
+
+            &:hover{
+                &::after{
+                        @include distance($w:100% , $h:100%);
+                        background-color: $firstColor
+                    }
+        i{
+            color: white;
+        }
+            }
+    }
+}
+    }
+    .part2{
+        @include flex;
+
+        .item{
+            img{
+                width:430px;
+            }
+        }
+}
+
+    >img{
+    @include distance;
+    transform: rotate(180deg);
+    @include position($b:0, $l:0);
+}
+
+.next{
+    @include position($b: 20%, $l:50%);
+    transform: translateX(-50%);
+    width: 20px;
+    cursor: pointer;
+    z-index: 10;
+
+    img{
+        @include position($t:0% , $l:0%);
+        
+        @for $i from 1 through 3{
+        &:nth-of-type(#{$i}){
+            animation: {
+                name: animate_#{$i};
+                duration:3s;
+                iteration-count: infinite;
+            };
+        }
+        }
+
+}
+}
+}

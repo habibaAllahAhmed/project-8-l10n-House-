@@ -1,0 +1,23 @@
+@use "../abstracts" as *;
+
+#About{
+    background-color: white;
+
+    .part1 {
+        .item1{
+        img{
+            width:95%;
+            animation-duration: 1.5s;
+            @include respond(850){
+                width: 100%;
+            }
+        }
+    }
+}
+
+    .part2 {
+        p{
+            line-height: 27px;
+        }
+}
+}

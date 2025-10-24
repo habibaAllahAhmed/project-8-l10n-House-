@@ -1,0 +1,19 @@
+#Services {
+    .item {
+        border-radius: 20px;
+        padding: 20px;
+        width: 90%;
+        transition-duration: 0.5s;
+        .read-more-btn {
+            cursor: pointer;
+        }
+        &:hover {
+            background-color: #fff;
+            transform: translateY(-10px);
+            box-shadow: 0 20px 50px #00000080;
+        }
+    }
+    img {
+        width: 64px;
+    }
+}

@@ -1,0 +1,94 @@
+@use "../abstracts" as *;
+
+nav.navbar {
+    @include distance;
+    transition-duration: 0.5s;
+    @include position($p: fixed, $t: 0, $l: 0, $z: 90);
+
+    &.none {
+        transition-duration: 0.5s;
+        display: none;
+    }
+    .container {
+        @include respond(350) {
+            width: 95%;
+        }
+        @include respond(350) {
+            width: 90%;
+        }
+
+        .navbar-toggler {
+            height: 30px;
+            width: 40px;
+
+            &:focus {
+                box-shadow: none;
+            }
+        }
+
+        .navbar-collapse {
+            @include respond(350) {
+                padding: 10px;
+                @include flex($jc: center, $ai: center);
+                background-color: #ffffffe6;
+                border-radius: 10px;
+                .nav-item {
+                    margin-bottom: 10px;
+                }
+            }
+        }
+    }
+    .navbar-brand {
+        width: 12%;
+        transition-duration: 0.5s;
+        @include respond(350) {
+            width: 30%;
+        }
+        @include respond(350) {
+            width: 20%;
+        }
+        @include respond(350) {
+            width: 15%;
+        }
+    }
+
+    .nav-item:not(:last-child) {
+        margin-right: 20px;
+    }
+    .nav-item {
+        text-align: center;
+        .nav-link {
+            position: relative;
+            font-weight: 500;
+            &:focus{
+                color: $firstColor;
+            }
+
+            &::before {
+                @include createEle($w: 0%, $h: 3px);
+                background-color: $secondColor;
+                @include position($b: -10px, $l: 50%);
+                transition-duration: 0.5s;
+            }
+
+            &.active,
+            &:hover {
+                color: $firstColor;
+                &::before {
+                    width: 100%;
+                    left: 0%;
+                }
+            }
+        }
+    }
+
+    &.scrolled {
+        background-color: rgba(255, 255, 255, 0.9);
+        .navbar-brand {
+            width: 8%;
+            @include respond(350) {
+                width: 20%;
+            }
+        }
+    }
+}

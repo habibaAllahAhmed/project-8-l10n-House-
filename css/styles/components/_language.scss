@@ -1,0 +1,23 @@
+@use "../abstracts" as *;
+
+#Language {
+    @include background("../images/youth.jpg");
+    .langBtn {
+        display: flex;
+        width: fit-content;
+        margin: auto;
+        .button {
+            transition: 0.5s !important;
+            transform: translateY(0px);
+            &:hover {
+                transform: translateY(-10px);
+            }
+            button {
+                border-radius: 15px;
+                padding: 10px 20px;
+                border: none;
+                font-weight: 600;
+            }
+        }
+    }
+}

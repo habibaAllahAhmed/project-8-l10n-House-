@@ -1,0 +1,16 @@
+@use "../abstracts" as *;
+
+#Video{
+        @include background("../images/video-bg.jpg");
+    .container{
+        i{
+            font-size: 70px;
+            transition-duration: .5s;
+            &:hover{
+                transform: scale(1.2);
+                cursor: pointer;
+            }
+        }
+    }
+
+}

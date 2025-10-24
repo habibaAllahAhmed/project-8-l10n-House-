@@ -1,0 +1,34 @@
+@use "../abstracts" as *;
+
+.clients{
+    .container{
+        .owl-carousel{
+            .owl-dots{
+                button{
+                    &.active{
+                        span{
+                            opacity: 1;
+                        }
+                    }
+                    span{
+                        background-color: $secondColor;
+                        opacity: .5;
+                    }
+                }
+            }
+            .owl-stage{
+                @include flex;
+                .item{
+                    margin: auto;
+                    @include respond(350){
+                        width: 200px;
+                    }
+                }
+                .dell , .kia{
+                    width: 150px;
+                }
+            }
+        }
+
+    }
+}

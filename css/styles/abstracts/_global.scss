@@ -1,0 +1,315 @@
+@use "variables" as *;
+@use "mixin" as *;
+
+.firstColor {
+    color: $firstColor;
+}
+
+.secondColor {
+    color: $secondColor;
+}
+
+body {
+    background: linear-gradient(to right, #eaeaea, #dbdbdb, #f2f2f2, #ada996);
+    z-index: -1;
+    overflow-x: hidden;
+}
+
+.arrow {
+    position: fixed;
+    right: 0;
+    top: 50%;
+    z-index: 100;
+    transform: translate(100%, -50%);
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    background-color: $firstColor;
+    width: 70px;
+    height: 40px;
+    transition-duration: 0.5s;
+    &.show {
+        transform: translate(62%, -50%);
+    }
+    &:hover,
+    &.show:hover {
+        cursor: pointer;
+        transform: translate(0%, -50%);
+    }
+    h5 {
+        text-decoration: none;
+        color: white;
+        font-size: 14px;
+        margin: 0;
+    }
+    i {
+        color: white;
+    }
+}
+
+p {
+    color: #555;
+}
+
+section {
+    &:nth-of-type(even) {
+        background: linear-gradient(to right, #eaeaea, #dbdbdb, #f2f2f2, #ada996);
+    }
+
+    &:nth-of-type(odd) {
+        background-color: white;
+    }
+    .title {
+        margin: auto;
+        width: fit-content;
+
+        h2 {
+            font-size: 40px;
+            font-weight: 700;
+            position: relative;
+            @include respond(350) {
+                font-size: 30px;
+            }
+            @include respond(650) {
+                font-size: 40px;
+            }
+
+            &::after {
+                content: "";
+                @include createEle($w: 40%, $h: 4px);
+                margin: auto;
+                background-color: $secondColor;
+                @include position($l: 30%, $b: -10px);
+                transition-duration: 0.5s;
+            }
+        }
+    }
+    &:hover {
+        .title {
+            h2 {
+                &::after {
+                    width: 100%;
+                    left: 0%;
+                }
+            }
+        }
+    }
+}
+
+.popup {
+    @include position($p: fixed, $l: 0, $t: 0);
+    z-index: 100;
+    @include distance($h: 100%);
+    background-color: rgba(0, 0, 0, 0.5);
+    display: none;
+    overflow: auto;
+    overflow-x: hidden;
+
+    &[data-popup-name="video"] {
+        @include flex;
+        display: none;
+        .box {
+            @include distance($w: 800px, $h: 400px);
+            @include respond(350) {
+                @include distance($w: 300px, $h: 200px);
+            }
+            @include respond(450) {
+                @include distance($w: 350px, $h: 250px);
+            }
+            @include respond(650) {
+                @include distance($w: 500px, $h: 350px);
+            }
+            border-radius: 10px;
+            overflow: hidden;
+
+            iframe {
+                @include distance($h: 100%);
+            }
+        }
+    }
+    &[data-popup-name="language"] {
+        .box {
+            border-top-right-radius: 0;
+            border-bottom-right-radius: 0;
+            padding: 15px 5px 25px 30px;
+            transform: translateX(100%);
+            transition-duration: 1s;
+            margin: 0;
+            @include position($r: 0, $t: 0);
+            width: 40%;
+            @include respond(350) {
+                width: 80%;
+            }
+            @include respond(450) {
+                width: 60%;
+            }
+            @include respond(850) {
+                width: 40%;
+            }
+            i.fa-xmark {
+                width: 20px;
+                background-color: #333;
+                height: 20px;
+                @include flex;
+                border-radius: 5px;
+                cursor: pointer;
+            }
+            .language-section:nth-of-type(odd) {
+                h4 {
+                    position: relative;
+                    font-size: 24px;
+                    @include respond(350) {
+                        font-size: 20px;
+                    }
+                    @include respond(650) {
+                        font-size: 24px;
+                    }
+                    color: $firstColor;
+                    &::after {
+                        @include createEle($w: 17%, $h: 3px);
+                        @include respond(350) {
+                            @include createEle($w: 40%, $h: 3px);
+                        }
+                        @include respond(450) {
+                            @include createEle($w: 30%, $h: 3px);
+                        }
+                        @include respond(650) {
+                            @include createEle($w: 20%, $h: 3px);
+                        }
+                        background-color: $firstColor;
+                        @include position($b: -7px);
+                    }
+                }
+                i {
+                    color: $firstColor;
+                }
+            }
+            .language-section:nth-of-type(even) {
+                h4 {
+                    position: relative;
+                    font-size: 24px;
+                    @include respond(350) {
+                        font-size: 20px;
+                    }
+                    @include respond(650) {
+                        font-size: 24px;
+                    }
+                    color: $secondColor;
+                    &::after {
+                        @include createEle($w: 17%, $h: 3px);
+                        @include respond(350) {
+                            @include createEle($w: 40%, $h: 3px);
+                        }
+                        @include respond(450) {
+                            @include createEle($w: 30%, $h: 3px);
+                        }
+                        @include respond(650) {
+                            @include createEle($w: 20%, $h: 3px);
+                        }
+                        background-color: $secondColor;
+                        @include position($b: -7px);
+                    }
+                }
+                i {
+                    color: $secondColor;
+                }
+            }
+        }
+    }
+
+    &[data-popup-name="Sector"] {
+        .box {
+            width: 80%;
+            .head {
+                padding: 0;
+            }
+
+            .body {
+                padding: 10px 10px;
+            }
+            .part {
+                max-width: 350px;
+                margin: 0 auto;
+                .item {
+                    background-color: #ebfbee;
+                    padding: 10px;
+                    border-radius: 10px;
+                    img {
+                        width: 64px;
+                    }
+                    h6 {
+                        background-color: #dfeee2;
+                        font-weight: 400;
+                        font-size: 13px;
+                    }
+                }
+            }
+        }
+    }
+
+    .box {
+        background-color: white;
+        width: 75%;
+        margin: 20px auto;
+        border-radius: 10px;
+        position: relative;
+        display: block;
+
+        .head {
+            padding: 10px 40px;
+            text-align: center;
+            i {
+                @include position($t: 20px, $r: 20px);
+                transform: translateY(-50%);
+                cursor: pointer;
+            }
+        }
+
+        .body {
+            padding: 20px 40px;
+            ol {
+                color: #555;
+
+                li {
+                    &::marker {
+                        color: $secondColor;
+                        font-weight: 700;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.special-section {
+    @include flex;
+    height: 300px;
+    position: relative;
+    &::before {
+        @include createEle;
+        opacity: 0.8;
+        background: radial-gradient(#68b703, #305d00);
+        @include position($t: 0, $l: 0);
+    }
+
+    .title {
+        h2 {
+            &::after {
+                background-color: white;
+            }
+        }
+    }
+
+    .container {
+        position: relative;
+    }
+}
+
+footer {
+    background-color: #333;
+    p {
+        color: white;
+        margin: 0;
+    }
+}
+
+
