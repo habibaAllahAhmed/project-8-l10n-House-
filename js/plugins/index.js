@@ -59,7 +59,7 @@ $("nav .nav-link").click(function (e) {
 
 $("nav .navbar-toggler").click(function(){
     $("nav .collapse").toggleClass("show");
-})
+});
 
 (function () {
     fetch("https://semicode.tech/api/v1/l10nhouse/services")
@@ -138,3 +138,4 @@ $(".owl-carousel").owlCarousel({
         },
     },
 });
+
